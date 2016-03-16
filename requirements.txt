@@ -1,0 +1,15 @@
+Django==1.9.4
+EbookLib==0.15
+SpeechRecognition==3.3.3
+argcomplete==1.1.0
+argparse==1.2.1
+beautifulsoup4==4.4.1
+chardet==2.3.0
+lxml==3.5.0
+pdfminer==20140328
+python-docx==0.8.5
+python-pptx==0.5.8
+requests==2.9.1
+textract==1.4.0
+wsgiref==0.1.2
+xlrd==0.9.4

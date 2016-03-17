@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import convert_mp3
+from .views import convert_menu
 
 urlpatterns = [
-    url(r'^mp3/', convert_mp3 , name='converter'),
+    url(r'^mp3/', convert_menu , name='converter'),
 ]

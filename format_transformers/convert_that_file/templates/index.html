@@ -12,13 +12,34 @@
     </style>
 </head>
 <body>
-    <h1>Test here</h1>
-        <form action="" method='POST'>
+    <h1>Transmogrify</h1>
+        <!--<form action="" method='POST'>
             {% csrf_token %}
             <label>Select a file: </label>
             <input type="file" name="user_file">
-
+            <select name="input_format">
+                <option value="mp3">Mp3</option>
+                <option value="xls">Xls</option>
+                <option value="doc">Doc</option>
+            </select>
+            <br>
             <input type="submit">
         </form>
+        -->
+        <form method='POST' enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- https://docs.djangoproject.com/en/1.9/topics/forms/#form-rendering-options -->
+              <!-- https://docs.djangoproject.com/en/1.9/topics/forms/#looping-over-the-form-s-fields -->
+              {% for field in form %}
+
+                  <div>
+                    {{field.label_tag}}
+                    {{field}}
+                  </div>
+              {% endfor %}
+              <input type='submit' />
+        </form>
 </body>
+
+
 </html>

@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from helpers import convert, convert_from_doc
+from helpers import convert
 from .forms import UploadForm
 
 from .models import UploadedFile
 
+import shutil
+from helpers import base
 #from .forms import UploadedFileForm
 
 uploaded_file_name = ""
@@ -18,6 +20,10 @@ def convert_menu(request):
             up_file = UploadedFile(up_file=request.FILES['file_name'])
             up_file.save()
 
+            convert(uploaded_file_name)
+
+            #delete uploaded files after converting
+            shutil.rmtree(base + '/media')
             
         else:
             # return
@@ -25,10 +31,6 @@ def convert_menu(request):
 
     else:
         form = UploadForm()
-
-    if len(uploaded_file_name) > 0:
-        print('goooo****')
-        convert(uploaded_file_name)
 
     return render(request, 'index.html', locals())
 

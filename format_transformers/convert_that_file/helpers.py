@@ -1,45 +1,43 @@
 import os
 import textract
+from prettytable import PrettyTable
 
-path_to_files = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/media/temp/'
+base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path_to_files =  base + '/media/temp/'
+path_to_result = base + '/format_transformers/'
+
 
 def convert(uploaded_file):
-    avail_formats = {
-        'mp3': convert_from_mp3,
-        'doc': convert_from_mp3,
-        'xls': convert_from_mp3,
-        'wav': convert_from_mp3,
-        'jpg': convert_from_mp3,
-        'jpeg': convert_from_mp3
-    }
-
-    format_to_convert = str(uploaded_file).split('.')[-1]
+    ext_format = uploaded_file.split('.')[-1]
 
     file_dir = path_to_files + uploaded_file
 
-    print(file_dir)
-    avail_formats[format_to_convert](file_dir)
+    data = textract.process(file_dir)
+
+    if ext_format == 'xls':
+        data = convert_from_xml(data)
 
 
-def convert_from_mp3(the_file):
-    txt = textract.process(the_file)
-    print(txt)
+    with open(path_to_result+'result.txt', "w") as text_file:
+        text_file.write(data)
 
 
-def convert_from_doc(the_file):
+def convert_from_xml(data):
+    for el in data.split('\n'):
+            if el != '':
+                first_line_headers = el
+                break
+    t = PrettyTable()
+    t.field_names = first_line_headers.split(' ')
 
-    print(the_file)
-    txt = textract.process(the_file)
-    print(txt)
+    for el in data.split('\n'):
+        row = [el for el in el.split(' ') if el != '']
+        try:
+            if row != first_line_headers.split(' '):
+                t.add_row(row)
+        except:
+            continue
+    
+    return t.get_string()
 
 
-def convert_from_xls(the_file):
-    pass
-
-
-def convert_from_wav(the_file):
-    pass
-
-
-def convert_from_jpg(the_file):
-    pass

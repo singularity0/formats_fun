@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from helpers import convert
 from .forms import UploadForm
-from .helpers import convert, save_file
-# Create your views here.
+
+from .models import UploadedFile
+
+#from .forms import UploadedFileForm
+#from .helpers import convert, save_file
 
 
 def convert_menu(request):
@@ -11,12 +15,13 @@ def convert_menu(request):
             # print(form.cleaned_data)
             # form.save()
 
+            up_file = UploadedFile(up_file=request.FILES['file_name'])
+            up_file.save()
 
-            # the file object
-            uploaded_file = request.FILES['file_name']
+            uploaded_file_name = str(request.FILES['file_name'])
 
-            print(request.FILES)
-            convert(uploaded_file)
+            #print(uploaded_file_name)
+            convert(uploaded_file_name)
 
         else:
             # return
@@ -25,11 +30,6 @@ def convert_menu(request):
     else:
         form = UploadForm()
     return render(request, 'index.html', locals())
-
-
-def convert_wav():
-
-    pass
 
 
 

@@ -1,7 +1,3 @@
-import textract
-import pickle
-import os
-
 
 def convert(uploaded_file):
     avail_formats = {
@@ -12,36 +8,15 @@ def convert(uploaded_file):
         'jpg': convert_from_mp3,
         'jpeg': convert_from_mp3
     }
-    # uploaded_file = str(request.FILES['file_name'])
-    extensions = str(uploaded_file).split('.')[-1]
-    # save_file(uploaded_file,  extensions)
-    print(extensions)
 
-    return avail_formats[extensions](uploaded_file)
+    format_to_convert = str(uploaded_file).split('.')[-1]
+    #print(format_to_convert)
 
-def save_file(up_file, ext):
-    pass
-
-    # with open(path, 'w+') as f:
-    #     pickle.dump(up_file, f)
+    avail_formats[format_to_convert](uploaded_file)
 
 
 def convert_from_mp3(the_file):
-
-    print(the_file)
-    print(os.getcwd() + '/convert_that_file/' + str(the_file))
-    x = textract.process(os.getcwd() + '/convert_that_file/' + str(the_file))
-
-    f = open(os.getcwd() + '/convert_that_file/' + 'result.txt', 'w+')
-    f.write(x)
-    f.close()
-
-
-
-
-
-
-    print (42)
+    pass
 
 
 def convert_from_doc(the_file):

@@ -2,6 +2,9 @@ from django import forms
 from .models import History
 import os
 
+class UploadedFileForm(forms.Form):
+    up_file = forms.FileField(label = "Uplad a file: ")
+
 class UploadForm(forms.Form):
     FORMAT_CHOICES = [
         # <option value='S'>Small</option>

@@ -6,16 +6,16 @@ import os
 def convert(uploaded_file):
     avail_formats = {
         'mp3': convert_from_mp3,
-        'doc': convert_from_doc,
-        'xls': convert_from_xls,
-        'wav': convert_from_wav,
-        'jpg': convert_from_jpg,
-        'jpeg': convert_from_jpg
+        'doc': convert_from_mp3,
+        'xls': convert_from_mp3,
+        'wav': convert_from_mp3,
+        'jpg': convert_from_mp3,
+        'jpeg': convert_from_mp3
     }
     # uploaded_file = str(request.FILES['file_name'])
     extensions = str(uploaded_file).split('.')[-1]
     # save_file(uploaded_file,  extensions)
-
+    print(extensions)
 
     return avail_formats[extensions](uploaded_file)
 
@@ -27,9 +27,12 @@ def save_file(up_file, ext):
 
 
 def convert_from_mp3(the_file):
-    x = textract.process('P!nk - So What.mp3')
 
-    f = open('file1.txt', 'r+')
+    print(the_file)
+    print(os.getcwd() + '/convert_that_file/' + str(the_file))
+    x = textract.process(os.getcwd() + '/convert_that_file/' + str(the_file))
+
+    f = open(os.getcwd() + '/convert_that_file/' + 'result.txt', 'w+')
     f.write(x)
     f.close()
 

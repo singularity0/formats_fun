@@ -15,8 +15,8 @@ def convert_menu(request):
             # the file object
             uploaded_file = request.FILES['file_name']
 
-
-            # convert(uploaded_file)
+            print(request.FILES)
+            convert(uploaded_file)
 
         else:
             # return

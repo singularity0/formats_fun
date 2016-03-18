@@ -13,12 +13,12 @@ class UploadForm(forms.Form):
     file_formats = forms.ChoiceField(FORMAT_CHOICES)
 
     base_d = os.path.dirname(os.path.realpath(__file__))
+    name_of_file = 'temp.{}'.format(file_formats)
+    path = base_d + name_of_file
 
-    path = base_d + '/container/temp.{}'.format(file_formats)
-
-    file_name = forms.FileField(upload_to=path)
+    file_name = forms.FileField()
     # print(str(file_name))
-    print(dir(file_formats))
+    # print(dir(file_formats))
 # file_name = FileBrowseField("Browse", max_length=200,extensions=[".jpg", ".doc", ".xls", ".wav"], blank=True, null=True)
 
 

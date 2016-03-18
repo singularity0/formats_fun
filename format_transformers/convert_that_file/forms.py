@@ -20,10 +20,8 @@ class UploadForm(forms.Form):
     path = base_d + name_of_file
 
     file_name = forms.FileField()
-    # print(str(file_name))
-    # print(dir(file_formats))
-# file_name = FileBrowseField("Browse", max_length=200,extensions=[".jpg", ".doc", ".xls", ".wav"], blank=True, null=True)
 
+    
 
 class HistoryForm(forms.ModelForm):
     class Meta:

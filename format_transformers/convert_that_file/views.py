@@ -5,7 +5,6 @@ from .forms import UploadForm
 from .models import UploadedFile
 
 #from .forms import UploadedFileForm
-#from .helpers import convert, save_file
 
 
 def convert_menu(request):
@@ -20,7 +19,6 @@ def convert_menu(request):
 
             uploaded_file_name = str(request.FILES['file_name'])
 
-            #print(uploaded_file_name)
             convert(uploaded_file_name)
 
         else:

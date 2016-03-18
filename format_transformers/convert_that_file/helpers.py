@@ -1,3 +1,6 @@
+import os
+
+path_to_files = os.path.dirname(os.path.realpath(__file__)) + "/media/temp/"
 
 def convert(uploaded_file):
     avail_formats = {
@@ -10,9 +13,9 @@ def convert(uploaded_file):
     }
 
     format_to_convert = str(uploaded_file).split('.')[-1]
-    #print(format_to_convert)
 
-    avail_formats[format_to_convert](uploaded_file)
+    file_dir = path_to_files + uploaded_file
+    avail_formats[format_to_convert](file_dir)
 
 
 def convert_from_mp3(the_file):

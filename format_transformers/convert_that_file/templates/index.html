@@ -9,24 +9,94 @@
         form  { display: table;      }
         label { display: table-cell; }
         input { display: table-cell; }
+        .myButton {
+                background-color:#44c767;
+                -moz-border-radius:28px;
+                -webkit-border-radius:28px;
+                border-radius:28px;
+                border:1px solid #18ab29;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff;
+                font-family:Arial;
+                font-size:17px;
+                padding:16px 31px;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #2f6627;
+                margin-left: 700px;
+              }
+              .myButton:hover {
+                background-color:#5cbf2a;
+              }
+              .myButton:active {
+                position:relative;
+                top:1px;
+              }
+          h1 {
+              /*color: #FCA205;*/
+              color:'black';
+              font-family: 'Lobster';
+              }
+          body {
+              padding-left: 15px;
+              padding-right: 15px;
+
+              background-color:#DFE8EB;
+              }
+
+          .page-header {
+                background-color: #ff9400;
+                margin-top: 100;
+                padding: 20px 20px 20px 40px;
+                text-align: center;
+              }
+          .page-header h1, .page-header h1 a, {
+                color: 'white';
+                font-size: 35pt;
+                text-decoration: none;
+
+              }
+            .content {
+                  margin-left: 40px;
+              }
+          h1, h2, h3, h4 {
+                font-family: 'Lobster', cursive;
+              }
+          form div {
+              align-content: center;
+              color: 167C9E;
+              font-family: 'Lobster';
+              display: grid;
+              font-size: 20pt;
+
+          }
+          form {
+            margin-left: 700px;
+          }
+
+          input[type="button"] {
+              line-height: 34px;
+              }
+
     </style>
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
 </head>
 <body>
-    <h1>Transmogrify</h1>
-        <!--<form action="" method='POST'>
-            {% csrf_token %}
-            <label>Select a file: </label>
-            <input type="file" name="user_file">
-            <select name="input_format">
-                <option value="mp3">Mp3</option>
-                <option value="xls">Xls</option>
-                <option value="doc">Doc</option>
-            </select>
-            <br>
-            <input type="submit">
-        </form>
-        -->
-        <form method='POST' enctype="multipart/form-data">
+    <h1>Hack Bulgaria Python team</h1>
+    <br>
+    <br>
+    <br>
+    {% load crispy_forms_tags %}
+
+        <div class="page-header">
+        <h1><a href="/"></a>Transmogrify</h1>
+        </div>
+
+
+ <form method='POST' enctype="multipart/form-data">
               {% csrf_token %}
               <!-- https://docs.djangoproject.com/en/1.9/topics/forms/#form-rendering-options -->
               <!-- https://docs.djangoproject.com/en/1.9/topics/forms/#looping-over-the-form-s-fields -->
@@ -37,7 +107,9 @@
                     {{field}}
                   </div>
               {% endfor %}
-              <input type='submit' value='submit_it'/>
+              <br>
+              <br>
+              <input type='submit' value='CONVERT'/>
         </form>
 </body>
 

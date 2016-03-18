@@ -7,12 +7,19 @@ class UploadedFileForm(forms.Form):
 
 class UploadForm(forms.Form):
     FORMAT_CHOICES = [
-        # <option value='S'>Small</option>
-        ('mp3', 'MP3'),
-        ('wav', 'WAV'),
-        ('xls', 'XLS'),
-        ('doc', 'DOC')
-    ]
+       # <option value='S'>Small</option>
+       ('mp3', 'MP3'),
+       ('wav', 'WAV'),
+       ('xls', 'XLS'),
+       ('doc', 'DOC'),
+       ('pdf', 'PDF'),
+       ('csv', 'CSV'),
+       ('eml', 'EML'),
+       ('epub', 'EPUB'),
+       ('json', 'JSON'),
+       ('pdf', 'PDF')
+
+   ]
     file_formats = forms.ChoiceField(FORMAT_CHOICES)
 
     base_d = os.path.dirname(os.path.realpath(__file__))

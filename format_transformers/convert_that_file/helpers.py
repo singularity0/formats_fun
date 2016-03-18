@@ -1,6 +1,7 @@
 import os
+import textract
 
-path_to_files = os.path.dirname(os.path.realpath(__file__)) + "/media/temp/"
+path_to_files = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/media/temp/'
 
 def convert(uploaded_file):
     avail_formats = {
@@ -15,15 +16,21 @@ def convert(uploaded_file):
     format_to_convert = str(uploaded_file).split('.')[-1]
 
     file_dir = path_to_files + uploaded_file
+
+    print(file_dir)
     avail_formats[format_to_convert](file_dir)
 
 
 def convert_from_mp3(the_file):
-    pass
+    txt = textract.process(the_file)
+    print(txt)
 
 
 def convert_from_doc(the_file):
-    pass
+
+    print(the_file)
+    txt = textract.process(the_file)
+    print(txt)
 
 
 def convert_from_xls(the_file):
